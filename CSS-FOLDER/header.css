@@ -1,0 +1,215 @@
+/* Header and Sidebar Styles */
+:root {
+    --primary: #4CAF50;
+    --primary-dark: #388E3C;
+    --primary-light: rgba(76 , 175 , 80 , 0.2);
+    --accent: #8BC34A;
+    --text-primary: #212121;
+    --text-secondary: #757575;
+    --divider: #BDBDBD;
+    --background: #f9f9f9;
+    --card-bg: #ffffff;
+    --border-radius: 12px;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s ease;
+}
+
+.dark {
+    --text-primary: #f5f5f5;
+    --text-secondary: #b0b0b0;
+    --divider: #424242;
+    --background: #121212;
+    --card-bg: #1e1e1e;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background);
+}
+
+/* Top Navigation */
+.top-nav {
+    background-color: var(--primary-dark);
+    color: var(--white);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.logout-btn {
+    background-color: var(--primary-dark);
+    color: #f5f5f5;
+    border: 1px solid #f5f5f5;
+    border-radius: 800px;
+    padding: 8px 15px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: var(--white);
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 70px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: width 0.3s;
+    z-index: 90;
+}
+
+.sidebar.collapsed {
+    width: 70px;
+}
+
+.sidebar-header {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+.sidebar.collapsed .sidebar-header span,
+.sidebar.collapsed .sidebar-header .admin-text,
+.sidebar.collapsed .sidebar-nav h3,
+.sidebar.collapsed .nav-item span {
+    display: none;
+}
+
+.sidebar-header span {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.admin-text {
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.sidebar-nav {
+    padding: 0 15px;
+}
+
+.sidebar-nav h3 {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-bottom: 15px;
+    padding-left: 5px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    transition: all 0.3s;
+}
+
+.nav-item i {
+    margin-right: 10px;
+    font-size: 18px;
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar.collapsed .nav-item {
+    justify-content: center;
+    padding: 12px 5px;
+}
+
+.sidebar.collapsed .nav-item i {
+    margin-right: 0;
+}
+
+.nav-item:hover {
+    background-color: var(--primary-dark);
+    color: white;
+}
+
+.nav-item.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 70px;
+    }
+    
+    .sidebar.collapsed {
+        width: 0;
+        padding: 0;
+    }
+    
+    .sidebar-header span,
+    .sidebar-header .admin-text,
+    .sidebar-nav h3,
+    .nav-item span {
+        display: none;
+    }
+    
+    .nav-item {
+        justify-content: center;
+        padding: 12px 5px;
+    }
+    
+    .nav-item i {
+        margin-right: 0;
+    }
+    
+    .main-content {
+        margin-left: 70px;
+    }
+    
+    .main-content.expanded {
+        margin-left: 0;
+    }
+}

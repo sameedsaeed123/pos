@@ -1,0 +1,718 @@
+/* Base Styles */
+:root {
+  --primary: #4caf50;
+  --border-color: #4caf50;
+  --primary-dark: #388e3c;
+  --primary-light: #c8e6c9;
+  --accent: #8bc34a;
+  --text-primary: #212121;
+  --text-secondary: #757575;
+  --divider: #bdbdbd;
+  --background: #f9f9f9;
+  --card-bg: #ffffff;
+  --danger: #f44336;
+  --warning: #ffc107;
+  --success: #4caf50;
+  --info: #2196f3;
+  --border-radius: 12px;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --transition: all 0.3s ease;
+  --white: #ffffff;
+}
+.message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 25px;
+  border-radius: 5px;
+  z-index: 1000;
+  font-weight: 500;
+}
+
+.message.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.message.error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+.dark {
+  --primary: #4caf50;
+  --primary-dark: #388e3c;
+  --primary-light: rgba(76, 175, 80, 0.2);
+  --accent: #8bc34a;
+  --text-primary: #f5f5f5;
+  --text-secondary: #b0b0b0;
+  --divider: #424242;
+  --background: #121212;
+  --card-bg: #1e1e1e;
+  --danger: #f44336;
+  --warning: #ffc107;
+  --success: #4caf50;
+  --info: #2196f3;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+/* Header Styles */
+.header {
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo i {
+  font-size: 24px;
+  color: var(--primary);
+}
+
+.logo h1 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-link:hover {
+  color: white;
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.user-profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-dark);
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.user-profile:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-profile::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+  top: -50%;
+  left: -50%;
+  transition: all 0.5s ease;
+}
+
+.user-profile:hover::after {
+  top: -20%;
+  left: -20%;
+}
+
+/* Content Styles */
+.content {
+  flex: 1;
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Main Navigation Buttons */
+.main-nav {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  background-color: var(--card-bg);
+  padding: 10px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.nav-button {
+  padding: 12px 20px;
+  background-color: #f5f5f5; /* Updated style */
+  border: none;
+  border-radius: var(--border-radius);
+  color: var(--text-primary); /* Updated style */
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-button i {
+  font-size: 16px;
+}
+
+.nav-button:hover {
+  background-color: var(--primary-dark); /* Updated style */
+  color: white; /* Updated style */
+}
+
+.nav-button.active {
+  background-color: var(--primary); /* Updated style */
+  color: white; /* Updated style */
+}
+
+/* Content Sections */
+.content {
+  background-color: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.content-section {
+  display: none;
+  padding: 20px;
+}
+
+.content-section.active {
+  display: block;
+}
+
+/* Search Container */
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 10px 15px;
+  box-shadow: var(--shadow);
+}
+
+.search-box i {
+  color: var(--text-light);
+  margin-right: 10px;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+}
+
+/* Table Styles */
+.table-container {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle; /* Added style from updates */
+}
+
+.data-table th {
+  background-color: var(--primary-dark);
+  color: white;
+  font-weight: 600;
+}
+
+.data-table tr:hover {
+  background-color: rgba(209, 250, 229, 0.3);
+}
+
+.data-table .action-btn {
+  padding: 6px 10px;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  transition: var(--transition);
+  color: white;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.data-table .action-btn:not(.delete-btn) {
+  background-color: var(--primary);
+}
+
+.data-table .action-btn:not(.delete-btn):hover {
+  background-color: var(--primary-dark);
+}
+
+.data-table .action-btn.delete-btn {
+  background-color: var(--danger) !important;
+  margin-left: 5px;
+}
+
+.data-table .action-btn.delete-btn:hover {
+  background-color: #d32f2f !important;
+}
+
+/* Form Styles */
+.form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.form-container h2 {
+  margin-bottom: 20px;
+  color: var(--primary-dark);
+  font-size: 24px;
+}
+
+.subtitle {
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 0;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+}
+
+/* Add support for Urdu text in forms */
+.form-group input[lang="ur"],
+.form-group textarea[lang="ur"] {
+  font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting", serif;
+  line-height: 2;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+.submit-btn {
+  background-color: var(--primary-dark);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  padding: 12px 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+.download-btn {
+  margin-top: 10px;
+}
+
+/* Statement Container */
+.statement-container {
+  text-align: center;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+}
+
+.radio-group {
+  display: flex;
+  gap: 20px;
+  margin-top: 5px;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+  margin-right: 5px;
+  width: auto;
+}
+
+.radio-group i {
+  margin-right: 5px;
+}
+
+.text-danger {
+  color: var(--danger);
+}
+
+.text-success {
+  color: var(--success);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 80%;
+  max-width: 800px;
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text-light);
+}
+
+.close-modal:hover {
+  color: var(--primary-color);
+}
+
+/* Select with search */
+.select-with-search {
+  position: relative;
+}
+
+.select-with-search select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 16px;
+}
+
+.select-with-search input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 40px);
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  z-index: 2;
+  background-color: white;
+  display: none;
+}
+
+.select-with-search.searching select {
+  display: none;
+}
+
+.select-with-search.searching input {
+  display: block;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .main-nav {
+    flex-wrap: wrap;
+  }
+
+  .nav-button {
+    flex: 1;
+    min-width: 120px;
+    justify-content: center;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-menu {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* Filter Controls */
+.filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-btn {
+  padding: 8px 15px;
+  background-color: var(--background);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.filter-btn.active {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary-dark);
+}
+
+.filter-btn:hover {
+  background-color: var(--primary-light);
+}
+
+.filter-statement-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .filter-controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filter-statement-buttons {
+    width: 100%;
+  }
+}
+
+/* Make sure the account filters styling is properly implemented */
+
+.account-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+  width: 100%;
+}
+.btn-primary {
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 12px 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s
+}
+.account-filters .filter-btn {
+  padding: 8px 15px;
+  background-color: var(--background);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.account-filters .filter-btn.active {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary-dark);
+}
+
+.account-filters .filter-btn:hover {
+  background-color: var(--primary-light);
+}
+
+@media (max-width: 768px) {
+  .account-filters {
+    justify-content: flex-start;
+  }
+}
+
+/* Add Urdu font support */
+@font-face {
+  font-family: "Noto Nastaliq Urdu";
+  src: url("https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[lang="ur"] {
+  font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting", serif;
+  line-height: 2;
+}
+
+/* Support for right-to-left text direction */
+[dir="auto"] {
+  text-align: inherit;
+}
+
+.action-btn {
+  padding: 6px 10px;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  transition: var(--transition);
+  color: white;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  margin-right: 5px;
+}
+
+.action-btn:not(.delete-btn) {
+  background-color: var(--primary);
+}
+
+.action-btn:not(.delete-btn):hover {
+  background-color: var(--primary-dark);
+}
+
+.delete-btn {
+  background-color: var(--danger) !important;
+}
+
+.delete-btn:hover {
+  background-color: #d32f2f !important;
+}
+
+/* Add styles for the action buttons container */
+.action-buttons {
+  display: flex;
+  gap: 5px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
